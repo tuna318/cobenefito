@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  database:
+    container_name: cobenefito_db
+    image: mariadb:10.5
+    environment:
+      - MARIADB_ROOT_PASSWORD=password
+      - MARIADB_USER=admin
+      - MARIADB_PASSWORD=password
+      - MARIADB_DATABASE=cobenefito
+    volumes:
+      - ./backend/db-data:/var/lib/mysql
+
+  backend:
+    container_name: cobenefito_be
+    environment:
+      - DB_HOST=database
+      - DB_USERNAME=admin
+      - DB_PASSWORD=password
+      - DB_DATABASE=cobenefito
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    stdin_open: true
+    tty: true
+
