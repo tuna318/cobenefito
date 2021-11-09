@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_043436) do
   create_table "spaces_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username"
     t.integer "user_role", limit: 1
-    t.string "user_hashed_password"
+    t.string "user_password_digest"
     t.integer "user_reward_points"
     t.integer "user_claimable_points"
     t.bigint "user_id"
