@@ -1,7 +1,7 @@
 require: 
   - rubocop-rails
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
 
 Style/StringLiterals:
@@ -35,4 +35,7 @@ Layout/ExtraSpacing:
   Enabled: false
 
 Style/GlobalStdStream:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
   Enabled: false
