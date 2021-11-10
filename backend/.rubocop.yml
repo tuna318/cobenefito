@@ -39,3 +39,6 @@ Style/GlobalStdStream:
 
 Rails/HasManyOrHasOneDependent:
   Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
