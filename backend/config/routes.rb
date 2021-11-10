@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :manager do
     # manager routers here
+    resources :employees
   end
 
   namespace :employee do

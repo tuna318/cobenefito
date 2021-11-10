@@ -9,6 +9,18 @@ module ErrorHandler
       rescue_from ActiveRecord::RecordInvalid do |e|
         respond(:unprocessable_entity, 422, e.to_s)
       end
+
+      rescue_from JWT::VerificationError do
+        respond(:unauthorized, 401, 'Unauthorized')
+      end
+
+      rescue_from CustomErrors::Unauthorized do
+        respond(:unauthorized, 401, 'Unauthorized')
+      end
+
+      rescue_from CustomErrors::RecordExisted do |e|
+        respond(:unprocessable_entity, 422, e.to_s)
+      end
     end
   end
 
