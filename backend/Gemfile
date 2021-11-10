@@ -12,6 +12,7 @@ gem 'puma', '~> 5.0'
 # dotenv reader
 gem 'dotenv-rails', groups: [:development, :test]
 # rubocop
+gem 'jwt'
 gem 'rubocop-rails', require: false
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
@@ -27,7 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
