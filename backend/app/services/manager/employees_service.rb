@@ -21,6 +21,15 @@ module Manager
         space.spaces_users.map { |user| user_response(user) }
       end
 
+      def get_employee_details(space, user_id)
+        space_user = space.spaces_users.find_by(user_id: user_id)
+        raise ActiveRecord::RecordNotFound unless space_user
+
+        user_coupons = space.coupons.find_by(user_id: user_id) || []
+
+        [user_response(space_user), user_coupons]
+      end
+
       private
 
       def user_response(space_user)
