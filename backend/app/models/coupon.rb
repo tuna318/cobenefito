@@ -1,6 +1,6 @@
 class Coupon < ApplicationRecord
   belongs_to :space
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :coupon_transactions
 
   enum usuable_for: { shopping: 0, travel: 1, food: 2, health: 3 },
@@ -8,7 +8,7 @@ class Coupon < ApplicationRecord
        status: { available: 0, on_sale: 1, used: 2 }
 
   validates :name, presence: true
-  validates :code, presence: true
+  validates :code, presence: true, uniqueness: true
   validates :usuable_at, presence: true
   validates :usuable_for, inclusion: { in: usuable_fors }
   validates :value, presence: true
