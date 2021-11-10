@@ -11,8 +11,26 @@ module Manager
           username: params[:username] || params[:email].match(/[^@]*/)[0],
           user_password: params[:password],
           user_role: 'employee',
-          user_id: employee.id
+          user_id: employee.id,
+          user_reward_points: 0,
+          user_claimable_points: 100
         )
+      end
+
+      def index(space)
+        space.spaces_users.map { |user| user_response(user) }
+      end
+
+      private
+
+      def user_response(space_user)
+        {
+          id: space_user.user.id,
+          email: space_user.user.email,
+          username: space_user.username,
+          reward_points: space_user.user_reward_points,
+          claimable_points: space_user.user_claimable_points
+        }
       end
     end
   end
