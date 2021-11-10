@@ -5,5 +5,5 @@ class User < ApplicationRecord
   has_many :coupons
   has_many :coupon_transactions
 
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
 end

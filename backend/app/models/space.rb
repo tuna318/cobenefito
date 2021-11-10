@@ -5,5 +5,5 @@ class Space < ApplicationRecord
   has_many :claim_point_requests
   has_many :coupon_transactions
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end
