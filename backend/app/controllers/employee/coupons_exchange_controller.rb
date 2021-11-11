@@ -7,5 +7,17 @@ module Employee
 
       render json: coupons, status: :ok
     end
+
+    def create
+      Employee::CouponsExchangeService.create(@current_space, @current_user, create_params)
+
+      render json: {}, status: :ok
+    end
+
+    private
+
+    def create_params
+      params.permit(:price, :coupon_id)
+    end
   end
 end

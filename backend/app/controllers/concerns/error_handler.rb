@@ -26,6 +26,10 @@ module ErrorHandler
         respond(:unprocessable_entity, 422, e.to_s)
       end
 
+      rescue_from CustomErrors::CouponNotAvailable do |e|
+        respond(:record_not_found, 404, e.to_s)
+      end
+
       rescue_from ArgumentError do |e|
         respond(:unprocessable_entity, 422, e.to_s)
       end

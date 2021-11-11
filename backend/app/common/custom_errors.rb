@@ -10,4 +10,10 @@ module CustomErrors
       super
     end
   end
+
+  class CouponNotAvailable < StandardError
+    def initialize(msg = "Coupon not available")
+      super
+    end
+  end
 end

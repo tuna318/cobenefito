@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   namespace :employee do
     # employee routes here
     resources :coupons
-    get 'coupons_exchange', to: 'coupons_exchange#index'
+    resources :coupons_exchange, only: [:index, :create]
   end
 end
