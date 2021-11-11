@@ -8,6 +8,21 @@ module Manager
       render json: {}, status: :created
     end
 
+    def index
+      spaces_users = Manager::EmployeesService.index(@current_space)
+
+      render json: spaces_users, status: :ok
+    end
+
+    def show
+      employee, coupons = Manager::EmployeesService
+                          .get_employee_details(@current_space, params[:id])
+
+      render json: { employee: employee, coupons: coupons }, status: :ok
+    end
+
+    private
+
     def register_employee_params
       params.permit(:email, :password)
     end

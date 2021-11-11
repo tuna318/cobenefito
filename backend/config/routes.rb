@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   namespace :manager do
     # manager routers here
     resources :employees
+    resources :coupons, only: [:index, :create]
+    patch 'coupons', to: 'coupons#distribute'
   end
 
   namespace :employee do
