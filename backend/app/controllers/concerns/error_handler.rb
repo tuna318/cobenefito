@@ -34,6 +34,10 @@ module ErrorHandler
         respond(:unprocessable_entity, 422, e.to_s)
       end
 
+      rescue_from CustomErrors::ReferenceLinkSumitted do |e|
+        respond(:unprocessable_entity, 422, e.to_s)
+      end
+
       rescue_from ArgumentError do |e|
         respond(:unprocessable_entity, 422, e.to_s)
       end

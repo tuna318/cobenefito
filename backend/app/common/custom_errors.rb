@@ -22,4 +22,10 @@ module CustomErrors
       super
     end
   end
+
+  class ReferenceLinkSumitted < StandardError
+    def initialize(msg = "Reference link submitted")
+      super
+    end
+  end
 end
