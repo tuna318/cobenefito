@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     resources :coupons_exchange, only: [:index, :create]
     resources :claim_points_requests
     post 'coupons_exchange/purchase', to: 'coupons_exchange#purchase'
+    get 'me', to: 'me#index'
   end
 end
