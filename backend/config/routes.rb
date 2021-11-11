@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   namespace :employee do
     # employee routes here
+    resources :coupons
   end
 end
