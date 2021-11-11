@@ -22,6 +22,24 @@ module Employee
         end
       end
 
+      def purchase(space, space_user, params)
+        coupon_tx = CouponTransaction.find_by!(id: params[:tx_id], space_id: space.id)
+        coupon = coupon_tx.coupon
+        raise CustomErrors::CouponNotAvailable unless coupon.status == 'on_sale'
+        raise CustomErrors::NotEnoughRewardPoints if space_user.user_reward_points < coupon_tx.price
+
+        space_user.user_reward_points -= coupon_tx.price
+        coupon_tx.buyer_id = space_user.user.id
+        coupon.user_id = space_user.user.id
+        coupon.status = :available
+
+        Coupon.transaction do
+          space_user.save!
+          coupon_tx.save!
+          coupon.save!
+        end
+      end
+
       private
 
       def exchange_coupon_response(coupon)

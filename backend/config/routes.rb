@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     # employee routes here
     resources :coupons
     resources :coupons_exchange, only: [:index, :create]
+    post 'coupons_exchange/purchase', to: 'coupons_exchange#purchase'
   end
 end

@@ -30,6 +30,10 @@ module ErrorHandler
         respond(:record_not_found, 404, e.to_s)
       end
 
+      rescue_from CustomErrors::NotEnoughRewardPoints do |e|
+        respond(:unprocessable_entity, 422, e.to_s)
+      end
+
       rescue_from ArgumentError do |e|
         respond(:unprocessable_entity, 422, e.to_s)
       end

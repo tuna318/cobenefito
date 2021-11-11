@@ -14,10 +14,24 @@ module Employee
       render json: {}, status: :ok
     end
 
+    def purchase
+      Employee::CouponsExchangeService.purchase(
+        @current_space,
+        @current_space_user,
+        purchase_params
+      )
+
+      render json: {}, status: :ok
+    end
+
     private
 
     def create_params
       params.permit(:price, :coupon_id)
+    end
+
+    def purchase_params
+      params.permit(:tx_id)
     end
   end
 end

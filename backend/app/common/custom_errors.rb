@@ -16,4 +16,10 @@ module CustomErrors
       super
     end
   end
+
+  class NotEnoughRewardPoints < StandardError
+    def initialize(msg = "Not enough reward point")
+      super
+    end
+  end
 end
