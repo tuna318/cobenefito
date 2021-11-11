@@ -2,7 +2,12 @@ module Employee
   class ClaimPointsRequestsController < ApplicationController
     before_action :authorize_employee_request
 
-    def index; end
+    def index
+      requests = Employee::ClaimPointsRequestsService
+                 .index(@current_space, @current_user)
+
+      render json: requests, status: :ok
+    end
 
     def create
       Employee::ClaimPointsRequestsService.create(

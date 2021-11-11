@@ -1,6 +1,12 @@
 module Employee
   class ClaimPointsRequestsService
     class << self
+      def index(space, user)
+        user.claim_point_requests
+            .where(space_id: space.id)
+            .order(created_at: :desc)
+      end
+
       def create(space, user, params)
         if space.claim_point_requests
                 .find_by(reference_link: params[:reference_link])
