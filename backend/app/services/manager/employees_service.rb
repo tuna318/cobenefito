@@ -25,7 +25,7 @@ module Manager
         space_user = space.spaces_users.find_by(user_id: user_id)
         raise ActiveRecord::RecordNotFound unless space_user
 
-        user_coupons = space.coupons.find_by(user_id: user_id) || []
+        user_coupons = space.coupons.where(user_id: user_id)
 
         [user_response(space_user), user_coupons]
       end

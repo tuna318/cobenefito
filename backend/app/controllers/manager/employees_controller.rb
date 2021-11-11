@@ -11,7 +11,7 @@ module Manager
     def index
       spaces_users = Manager::EmployeesService.index(@current_space)
 
-      render json: { spaces_users: spaces_users }, status: :ok
+      render json: spaces_users, status: :ok
     end
 
     def show

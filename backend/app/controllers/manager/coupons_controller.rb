@@ -8,6 +8,12 @@ module Manager
       render json: {}, status: :created
     end
 
+    def index
+      coupons = Manager::CouponsService.index(@current_space)
+
+      render json: coupons, status: :ok
+    end
+
     private
 
     def register_coupons_param
