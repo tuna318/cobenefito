@@ -18,7 +18,9 @@ module Manager
       end
 
       def index(space)
-        space.spaces_users.map { |user| user_response(user) }
+        employees = space.spaces_users.where(user_role: 'employee')
+
+        employees.map { |user| user_response(user) }
       end
 
       def get_employee_details(space, user_id)

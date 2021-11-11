@@ -6,5 +6,5 @@ class ClaimPointRequest < ApplicationRecord
 
   validates :status, inclusion: { in: statuses }
   validates :title, presence: true
-  validates :preference_link, presence: true
+  validates :reference_link, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]) }
 end

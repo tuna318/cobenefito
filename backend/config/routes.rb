@@ -7,11 +7,15 @@ Rails.application.routes.draw do
     # manager routers here
     resources :employees
     resources :coupons, only: [:index, :create]
-    resources :claim_point_requests, only: [:index, :update]
+    resources :claim_points_requests, only: [:index, :update]
     patch 'coupons', to: 'coupons#distribute'
   end
 
   namespace :employee do
     # employee routes here
+    resources :coupons
+    resources :coupons_exchange, only: [:index, :create]
+    resources :claim_points_requests
+    post 'coupons_exchange/purchase', to: 'coupons_exchange#purchase'
   end
 end
