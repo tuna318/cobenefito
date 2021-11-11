@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     # manager routers here
     resources :employees
     resources :coupons, only: [:index, :create]
+    resources :claim_point_requests, only: [:index, :update]
     patch 'coupons', to: 'coupons#distribute'
   end
 
