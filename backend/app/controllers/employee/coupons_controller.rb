@@ -7,5 +7,17 @@ module Employee
 
       render json: coupons, status: :ok
     end
+
+    def update
+      Employee::CouponsService.update(@current_space, @current_user, update_coupon_params)
+
+      render json: {}, status: :ok
+    end
+
+    private
+
+    def update_coupon_params
+      params.permit(:id, :status)
+    end
   end
 end

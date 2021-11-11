@@ -25,6 +25,10 @@ module ErrorHandler
       rescue_from CustomErrors::CouponNumberLessThanEmployeeNumber do |e|
         respond(:unprocessable_entity, 422, e.to_s)
       end
+
+      rescue_from ArgumentError do |e|
+        respond(:unprocessable_entity, 422, e.to_s)
+      end
     end
   end
 
