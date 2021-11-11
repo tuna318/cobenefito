@@ -14,6 +14,12 @@ module Manager
       render json: coupons, status: :ok
     end
 
+    def distribute
+      Manager::CouponsService.distribute(@current_space, distribute_coupons_params)
+
+      render json: {}, status: :ok
+    end
+
     private
 
     def register_coupons_param
@@ -24,6 +30,17 @@ module Manager
         :expire_at,
         :value,
         codes: []
+      )
+    end
+
+    def distribute_coupons_params
+      params.permit(
+        :name,
+        :usuable_at,
+        :usuable_for,
+        :expire_at,
+        :value,
+        user_ids: []
       )
     end
   end

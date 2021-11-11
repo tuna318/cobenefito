@@ -14,6 +14,24 @@ module Manager
         distinct_coupons_from_coupon_groups(coupon_groups)
       end
 
+      def distribute(space, params)
+        user_ids = params[:user_ids]
+        return if user_ids.empty?
+
+        distribute_coupons = get_distribute_coupons(space, params)
+        if distribute_coupons.size < user_ids&.size
+          raise CustomErrors::CouponNumberLessThanEmployeeNumber
+        end
+
+        # TODO: check user_id whether it belongs to space or not
+        update_coupons = []
+        (0...user_ids.size).each do |i|
+          distribute_coupons[i].user_id = user_ids[i]
+          update_coupons.push(distribute_coupons[i].as_json)
+        end
+        Coupon.upsert_all(update_coupons)
+      end
+
       private
 
       def group_coupons(coupons)
@@ -47,6 +65,17 @@ module Manager
             code: code
           }
         )
+      end
+
+      def get_distribute_coupons(space, params)
+        space.coupons.where({
+                              name: params[:name],
+                              usuable_at: params[:usuable_at],
+                              expire_at: params[:expire_at],
+                              value: params[:value],
+                              status: 'available',
+                              user_id: nil
+                            })
       end
     end
   end
