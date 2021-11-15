@@ -7,6 +7,10 @@
 
     <v-spacer />
 
+    <div v-if="$auth.user.user_role === 'employee'" class="mr-10">
+      {{ $auth.user.user_reward_points }}
+      <v-icon color="secondary">mdi-star-circle</v-icon>
+    </div>
     <div>
       <span class="mr-4">
         {{ $auth.user.username }}

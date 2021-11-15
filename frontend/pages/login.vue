@@ -63,11 +63,12 @@ export default {
       this.$refs.form.validate();
       if (!this.formValid) return;
 
-      await this.$auth.loginWith('normal', {
+      const response = await this.$auth.loginWith('normal', {
         data: this.credentials,
       });
-
-      this.$router.push('/');
+      if (response) {
+        this.$router.push('/');
+      }
     },
   },
 };
