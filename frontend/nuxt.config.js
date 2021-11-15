@@ -29,6 +29,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/notifier.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,7 +43,14 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
   ],
+
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: process.env.API_BASE_URL,
+    }
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -51,9 +59,9 @@ export default {
       dark: false,
       themes: {
         light: {
-          primary: "FB8C00",
-          accent: "1E88E5",
-          secondary: colors.amber.darken3,
+          primary: "1565C0",
+          accent: "1565C0",
+          secondary: "FB8C00",
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

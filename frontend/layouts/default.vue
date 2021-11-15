@@ -1,11 +1,18 @@
 <template>
   <v-app>
     <v-main>
+      <v-snackbar v-model="snackbar" :color="snackbarColor" top>
+        {{ snackbarContent }}
+      </v-snackbar>
       <Nuxt />
     </v-main>
   </v-app>
 </template>
 
 <script>
-export default {};
+import layout from '@/mixins/layout';
+
+export default {
+  mixins: [layout],
+};
 </script>
