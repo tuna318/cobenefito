@@ -57,6 +57,7 @@
 
 <script>
 export default {
+  auth: false,
   data() {
     return {
       formValid: false,

@@ -44,7 +44,33 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
+
+  router: {
+    middleware: ['auth', 'role-check']
+  },
+
+  auth: {
+    strategies: {
+      normal: {
+        scheme: 'local',
+        token: {
+          property: 'token',
+          type: '',
+          required: true
+        },
+        user: {
+          property: '',
+        },
+        endpoints: {
+          login: { url: 'auth/login', method: 'POST' },
+          logout: false,
+          user: { url: 'auth/profile', method: 'GET' }
+        }
+      }
+    }
+  },
 
   publicRuntimeConfig: {
     axios: {

@@ -4,6 +4,9 @@
       <v-snackbar v-model="snackbar" :color="snackbarColor" top>
         {{ snackbarContent }}
       </v-snackbar>
+      <page-header v-if="$auth.loggedIn" />
+      <side-navigations v-if="$auth.loggedIn" />
+
       <Nuxt />
     </v-main>
   </v-app>
