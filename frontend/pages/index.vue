@@ -12,7 +12,7 @@
 
     <div class="welcome__content">
       <div class="welcome__text">
-        <h1 class="primary--text">Cobenefito</h1>
+        <h1 class="secondary--text">Cobenefito</h1>
         <p>A wonderful place to manage company coupons</p>
         <div class="my-2">
           <h3>
