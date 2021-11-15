@@ -6,8 +6,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - frontend',
-    title: 'frontend',
+    titleTemplate: '%s - Coupons management',
+    title: 'Cobenefito',
     htmlAttrs: {
       lang: 'en'
     },
@@ -18,7 +18,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/coupon.png' }
     ]
   },
 
@@ -29,6 +29,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/notifier.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,18 +43,25 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
   ],
+
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: process.env.API_BASE_URL,
+    }
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/main.sass'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+        light: {
+          primary: "1565C0",
+          accent: "1565C0",
+          secondary: "FB8C00",
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

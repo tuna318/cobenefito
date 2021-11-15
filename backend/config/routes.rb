@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   post 'spaces', to: 'spaces#create'
-  post 'login', to: 'auth#login'
+  post 'auth/login', to: 'auth#login'
+  get  'auth/profile', to: 'auth#profile'
 
   namespace :manager do
     # manager routers here
