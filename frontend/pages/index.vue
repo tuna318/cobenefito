@@ -1,77 +1,77 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <div>
+    <div class="welcome__header">
+      <div class="welcome__logo">
+        <v-img src="coupon.png" max-width="50" max-height="50" />
+      </div>
+      <div class="welcome__app-name">Cobenefito</div>
+      <v-spacer />
+      <div class="welcome__nav-item">Contact</div>
+      <div class="welcome__nav-item">About us</div>
+    </div>
+
+    <div class="welcome__content">
+      <div class="welcome__text">
+        <h1 class="primary--text">Cobenefito</h1>
+        <p>A wonderful place to manage company coupons</p>
+        <div class="my-2">
+          <h3>
+            <nuxt-link to="/register" class="accent--text"> Create a benefito space now </nuxt-link>
+          </h3>
+          <h3>
+            or
+            <nuxt-link to="/login" class="accent--text"> Join one </nuxt-link>
+          </h3>
+        </div>
+
+        <p>It's completely free</p>
+      </div>
+      <div class="welcome__banner">
+        <v-img src="banner.png" max-width="600" max-height="500" />
+      </div>
+    </div>
+  </div>
 </template>
+
+<script>
+export default {
+  layout: 'empty',
+};
+</script>
+
+<style lang="sass" scoped>
+.welcome
+  &__header, &__content
+    display: flex
+    flex-flow: row wrap
+
+  &__header
+    padding: 10px 50px
+
+  &__content
+    padding: 80px 100px
+
+  &__text
+    padding: 100px 0 50px 100px
+
+  &__app-name
+    height: 50px
+    line-height: 50px
+    margin-left: 20px
+    font-size: 24px
+    font-weight: 600
+
+  &__nav-item
+    height: 50px
+    line-height: 50px
+    margin-left: 30px
+    font-weight: 500
+    &:hover
+      cursor: pointer
+
+  &__text
+    width: 45%
+
+  &__banner
+    width: 55%
+</style>
