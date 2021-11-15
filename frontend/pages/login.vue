@@ -66,6 +66,8 @@ export default {
       await this.$auth.loginWith('normal', {
         data: this.credentials,
       });
+
+      this.$router.push('/');
     },
   },
 };
