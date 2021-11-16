@@ -7,8 +7,10 @@ module Manager
         end
       end
 
-      def index(space)
-        coupons = space.coupons.where(status: 'available', user_id: nil)
+      def index(space, params)
+        coupons = space.coupons
+                       .where(status: 'available', user_id: nil)
+                       .where('name LIKE :name', name: "%#{params[:name]}%")
         coupon_groups = group_coupons(coupons)
 
         distinct_coupons_from_coupon_groups(coupon_groups)
