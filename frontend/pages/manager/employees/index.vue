@@ -5,7 +5,7 @@
         <v-text-field
           v-model="search"
           label="Search by name"
-          holder="Search by name"
+          placeholder="Search by name"
           outlined
           dense
           clearable
@@ -13,7 +13,7 @@
         />
       </div>
 
-      <v-btn color="primary">Invite employee</v-btn>
+      <v-btn color="primary" @click="showEmployeeInvitation = true">Invite employee</v-btn>
     </div>
 
     <v-data-table
@@ -29,6 +29,12 @@
         </nuxt-link>
       </template>
     </v-data-table>
+
+    <lazy-dialog-employee-invitation
+      v-model="showEmployeeInvitation"
+      @canceled="showEmployeeInvitation = false"
+      @confirmed="showEmployeeInvitation = false"
+    />
   </div>
 </template>
 
@@ -46,6 +52,7 @@ export default {
         { text: '', value: 'action', sortable: false, width: '60px' },
       ],
       employees: [],
+      showEmployeeInvitation: false,
     };
   },
 
