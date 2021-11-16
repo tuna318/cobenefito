@@ -30,6 +30,12 @@
         <button type="button" class="btn--medium btn--table-action">Distribute</button>
       </template>
     </v-data-table>
+
+    <lazy-dialog-coupons-registration
+      v-model="showCouponsRegistration"
+      @canceled="showCouponsRegistration = false"
+      @confirmed="onRegisterCouponsConfirmed"
+    />
   </div>
 </template>
 
@@ -72,6 +78,11 @@ export default {
         params: { name: this.search },
       });
       this.loading = false;
+    },
+
+    onRegisterCouponsConfirmed() {
+      this.showCouponsRegistration = false;
+      this.fetchCoupons();
     },
 
     fetchDebounced: _.debounce(function () {
