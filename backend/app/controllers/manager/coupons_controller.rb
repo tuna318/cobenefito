@@ -9,7 +9,7 @@ module Manager
     end
 
     def index
-      coupons = Manager::CouponsService.index(@current_space)
+      coupons = Manager::CouponsService.index(@current_space, filter_coupons_params)
 
       render json: coupons, status: :ok
     end
@@ -42,6 +42,10 @@ module Manager
         :value,
         user_ids: []
       )
+    end
+
+    def filter_coupons_params
+      params.permit(:name)
     end
   end
 end

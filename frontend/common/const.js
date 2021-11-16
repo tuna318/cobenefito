@@ -12,3 +12,10 @@ export const RoleWhitelistedRoutes = {
   [UserRole.MANAGER]: [/^\/manager.*$/], // Any manager routes
   [UserRole.EMPLOYEE]: [/^\/employee.*$/], // Any employee routes
 };
+
+export const UsuableFor = {
+  SHOPPING: 'shopping',
+  TRAVEL: 'travel',
+  HEALTH: 'health',
+  FOOD: 'food',
+}
