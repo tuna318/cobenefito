@@ -9,7 +9,7 @@ module Manager
     end
 
     def index
-      spaces_users = Manager::EmployeesService.index(@current_space)
+      spaces_users = Manager::EmployeesService.index(@current_space, filter_employees_params)
 
       render json: spaces_users, status: :ok
     end
@@ -25,6 +25,10 @@ module Manager
 
     def register_employee_params
       params.permit(:email)
+    end
+
+    def filter_employees_params
+      params.permit(:username)
     end
   end
 end
