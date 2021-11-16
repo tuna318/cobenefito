@@ -15,8 +15,10 @@ module Manager
         send_invitation_email(current_space, employee, initial_password)
       end
 
-      def index(space)
-        employees = space.spaces_users.where(user_role: 'employee')
+      def index(space, params)
+        employees = space.spaces_users
+                         .where(user_role: 'employee')
+                         .where("username LIKE :username", username: "%#{params[:username]}%")
 
         employees.map { |user| user_response(user) }
       end
