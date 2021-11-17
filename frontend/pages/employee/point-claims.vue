@@ -1,6 +1,6 @@
 <template>
   <div class="page__content">
-    <v-btn color="primary">Create request</v-btn>
+    <v-btn color="primary" @click="showCreateClaim = true">Create request</v-btn>
 
     <v-data-table
       :headers="headers"
@@ -25,6 +25,12 @@
       :claim="selectedClaim"
       @closed="showClaimDetail = false"
     />
+
+    <lazy-dialog-create-claim
+      v-model="showCreateClaim"
+      @canceled="showCreateClaim = false"
+      @confirmed="onCreateClaimConfirmed"
+    />
   </div>
 </template>
 
@@ -42,6 +48,7 @@ export default {
       claims: [],
       selectedClaim: {},
       showClaimDetail: false,
+      showCreateClaim: false,
     };
   },
 
@@ -59,6 +66,11 @@ export default {
     onClaimDetailClicked(claim) {
       this.selectedClaim = claim;
       this.showClaimDetail = true;
+    },
+
+    onCreateClaimConfirmed() {
+      this.fetchClaims();
+      this.showCreateClaim = false;
     },
   },
 };
