@@ -20,13 +20,16 @@
           class="btn--medium btn--table-action coupon__btn"
           @click="onMarkReadClicked"
         >
-          Mark as read
+          Mark as used
         </button>
       </div>
       <div v-else-if="isOnSaleCoupon">
+        <div class="text-center">
+          {{ coupon.exchange_price }} <v-icon color="secondary">mdi-star-circle</v-icon>
+        </div>
         <button
           type="button"
-          class="btn--medium btn--table-action coupon__btn mt-5"
+          class="btn--medium btn--table-action coupon__btn mt-2"
           @click="onSaleCancelClicked"
         >
           Cancel exchange
