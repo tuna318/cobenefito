@@ -19,3 +19,9 @@ export const UsuableFor = {
   HEALTH: 'health',
   FOOD: 'food',
 }
+
+export const CouponStatus = {
+  AVAILABLE: 'available',
+  ON_SALE: 'onSale',
+  USED: 'used',
+}
