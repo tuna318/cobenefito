@@ -18,9 +18,7 @@
 </template>
 
 <script>
-import employeeCoupon from '~/components/employee-coupon.vue';
 export default {
-  components: { employeeCoupon },
   data() {
     return {
       loading: false,

@@ -81,7 +81,7 @@ export default {
 .coupon
   display: flex
   flex-flow: row nowrap
-  padding: 10px
+  padding: 10px 10px 10px 20px
   margin: 10px auto
 
   &__info
