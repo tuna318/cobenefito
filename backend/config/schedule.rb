@@ -18,7 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :environment, 'development' 
+set :environment, 'development'
 
 every 1.month do
   rake "job:reset_claimable_points"
