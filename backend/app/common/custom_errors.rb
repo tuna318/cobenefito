@@ -28,4 +28,10 @@ module CustomErrors
       super
     end
   end
+
+  class PurchaseOwneringCoupon < StandardError
+    def initialize(msg = "Cannot purchase your coupons")
+      super
+    end
+  end
 end

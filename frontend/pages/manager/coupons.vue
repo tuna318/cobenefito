@@ -26,8 +26,10 @@
       <template v-slot:[`item.value`]="{ item }">
         <div>{{ item.value }} $</div>
       </template>
-      <template v-slot:[`item.action`]>
-        <button type="button" class="btn--medium btn--table-action">Distribute</button>
+      <template v-slot:[`item.action`]="{ item }">
+        <button type="button" class="btn--medium btn--table-action" @click="onOfferClicked(item)">
+          Offer
+        </button>
       </template>
     </v-data-table>
 
@@ -35,6 +37,13 @@
       v-model="showCouponsRegistration"
       @canceled="showCouponsRegistration = false"
       @confirmed="onRegisterCouponsConfirmed"
+    />
+
+    <lazy-dialog-coupons-offer
+      v-model="showCouponsOffer"
+      :coupon-info="selectedCoupon"
+      @canceled="showCouponsOffer = false"
+      @confirmed="onOfferCouponsConfirmed"
     />
   </div>
 </template>
@@ -57,7 +66,9 @@ export default {
         { text: '', value: 'action', sortable: false, width: '80px' },
       ],
       coupons: [],
+      selectedCoupon: {},
       showCouponsRegistration: false,
+      showCouponsOffer: false,
     };
   },
 
@@ -83,6 +94,16 @@ export default {
     onRegisterCouponsConfirmed() {
       this.showCouponsRegistration = false;
       this.fetchCoupons();
+    },
+
+    onOfferCouponsConfirmed() {
+      this.showCouponsOffer = false;
+      this.fetchCoupons();
+    },
+
+    onOfferClicked(item) {
+      this.selectedCoupon = item;
+      this.showCouponsOffer = true;
     },
 
     fetchDebounced: _.debounce(function () {

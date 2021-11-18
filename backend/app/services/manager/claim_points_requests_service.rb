@@ -2,7 +2,8 @@ module Manager
   class ClaimPointsRequestsService
     class << self
       def index(space)
-        space.claim_point_requests.order(created_at: :DESC)
+        points_claims = space.claim_point_requests.order(created_at: :DESC)
+        points_claims.map { |points_claim| points_claim_response(points_claim) }
       end
 
       def update(space, params)
@@ -13,6 +14,15 @@ module Manager
       end
 
       private
+
+      def points_claim_response(points_claim)
+        space_user = points_claim.space.spaces_users.find_by(user_id: points_claim.user_id)
+        response = points_claim.as_json
+        response[:username] = space_user.username
+        response[:user_email] = points_claim.user.email
+        response[:user_claimable_points] = space_user.user_claimable_points
+        response
+      end
 
       def handle_reject_update(request)
         request.status = 'rejected'
