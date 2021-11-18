@@ -9,6 +9,8 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+# Gem for cron jobs
+gem 'whenever', require: false
 # dotenv reader
 gem 'dotenv-rails', groups: [:development, :test]
 # rubocop

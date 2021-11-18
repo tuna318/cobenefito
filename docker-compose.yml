@@ -11,6 +11,8 @@ services:
       - MARIADB_DATABASE=cobenefito
     volumes:
       - ./backend/db-data:/var/lib/mysql
+    ports:
+      - "33061:3306"
 
   backend:
     container_name: cobenefito_be
@@ -22,13 +24,27 @@ services:
       - DB_DATABASE=cobenefito
     build:
       context: ./backend
-      dockerfile: Dockerfile.dev
-    volumes:
-      - ./backend:/backend
+      dockerfile: Dockerfile.stg
+    # volumes:
+    #   - ./backend:/backend
     ports:
       - "3000:3000"
     depends_on:
       - database
+    stdin_open: true
+    tty: true
+
+  frontend:
+    container_name: cobenefito_fe
+    environment:
+      - API_BASE_URL=http://localhost:3000
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - backend
     stdin_open: true
     tty: true
 
