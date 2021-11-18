@@ -6,6 +6,13 @@
       :coupon="coupon"
       @purchase-clicked="onPurchaseClicked"
     />
+
+    <lazy-dialog-purchase-coupon
+      v-model="showPurchaseDialog"
+      :coupon="selectedCoupon"
+      @canceled="showPurchaseDialog = false"
+      @purchased="onPurchased"
+    />
   </div>
 </template>
 
@@ -33,9 +40,10 @@ export default {
       this.showPurchaseDialog = true;
     },
 
-    onPurchaseConfirmed() {
+    onPurchased() {
       this.showPurchaseDialog = false;
       this.fetchExchangeCoupons();
+      this.$auth.fetchUser();
     },
   },
 };
