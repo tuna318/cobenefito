@@ -26,7 +26,7 @@
       <div v-else-if="isOnSaleCoupon">
         <button
           type="button"
-          class="btn--medium btn--table-action coupon__btn"
+          class="btn--medium btn--table-action coupon__btn mt-5"
           @click="onSaleCancelClicked"
         >
           Cancel exchange
@@ -57,9 +57,19 @@ export default {
   },
 
   methods: {
-    onExchangeClicked() {},
-    onMarkReadClicked() {},
-    onSaleCancelClicked() {},
+    async onExchangeClicked() {
+      this.$emit('exchange-clicked', this.coupon);
+    },
+    async onMarkReadClicked() {
+      await this.$axios.patch(`/employee/coupons/${this.coupon.id}`, { status: CouponStatus.USED });
+      this.$emit('updated');
+    },
+    async onSaleCancelClicked() {
+      await this.$axios.patch(`/employee/coupons/${this.coupon.id}`, {
+        status: CouponStatus.AVAILABLE,
+      });
+      this.$emit('updated');
+    },
   },
 };
 </script>
@@ -72,12 +82,12 @@ export default {
   margin: 10px auto
 
   &__info
-    width: 80%
+    width: 75%
 
   &__actions
-    width: 20%
+    width: 25%
     padding: 10px 0
 
   &__btn
-    width: 100px
+    width: 130px
 </style>

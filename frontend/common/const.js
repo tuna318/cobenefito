@@ -22,6 +22,6 @@ export const UsuableFor = {
 
 export const CouponStatus = {
   AVAILABLE: 'available',
-  ON_SALE: 'onSale',
+  ON_SALE: 'on_sale',
   USED: 'used',
 }
