@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 set :environment, 'development'
+set :output, '~/cron.log'
+ENV.each { |k, v| env(k, v) }
 
 every 1.month do
   rake "job:reset_claimable_points"
