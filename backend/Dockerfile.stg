@@ -1,6 +1,8 @@
 FROM ruby:2.7.4
 
 WORKDIR /backend
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN apt-get install -y cron
 
 COPY Gemfile* .
 RUN bundle install
