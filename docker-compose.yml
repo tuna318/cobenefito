@@ -22,6 +22,11 @@ services:
       - DB_USERNAME=admin
       - DB_PASSWORD=password
       - DB_DATABASE=cobenefito
+      - SECRET=secret
+      - CLIENT_URL=http://localhost:8000
+      - EMAIL_ACCOUNT=tunadate.test@gmail.com
+      - EMAIL_USERNAME=tunadate.test
+      - EMAIL_PASSWORD=
     build:
       context: ./backend
       dockerfile: Dockerfile.stg
