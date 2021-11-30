@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Auths", type: :request do
-  before { register_space }
+  before { register_space_with_manager_account }
 
   describe "POST /auth/login" do
     let(:login_params) do
       {
         space_name: "space",
-        user_email: "hogehoge@gmail.com",
-        user_password: "12345678"
+        user_email: "manager@example.com",
+        user_password: "password"
       }
     end
     let(:send_login_request) { post auth_login_path(login_params) }
