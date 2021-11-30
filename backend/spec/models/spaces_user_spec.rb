@@ -21,19 +21,19 @@ RSpec.describe SpacesUser, type: :model do
     subject { spaces_user.save! }
 
     context "full association" do
-      let(:spaces_user) { build(:employee, user: user, space: space) }
+      let(:spaces_user) { build(:spaces_user_employee, user: user, space: space) }
 
       it { expect { subject }.not_to raise_error }
     end
 
     context "lack of user association" do
-      let(:spaces_user) { build(:employee, user: nil, space: space) }
+      let(:spaces_user) { build(:spaces_user_employee, user: nil, space: space) }
 
       it { expect { subject }.to raise_error(ActiveRecord::RecordInvalid) }
     end
 
     context "lack of space association" do
-      let(:spaces_user) { build(:employee, user: user, space: nil) }
+      let(:spaces_user) { build(:spaces_user_employee, user: user, space: nil) }
 
       it { expect { subject }.to raise_error(ActiveRecord::RecordInvalid) }
     end
