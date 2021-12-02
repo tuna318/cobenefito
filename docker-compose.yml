@@ -22,6 +22,7 @@ services:
       - DB_USERNAME=admin
       - DB_PASSWORD=password
       - DB_DATABASE=cobenefito
+      - DB_SOCKET=/tmp/mysql.sock
       - SECRET=secret
       - CLIENT_URL=http://localhost:8000
       - EMAIL_ACCOUNT=tunadate.test@gmail.com
