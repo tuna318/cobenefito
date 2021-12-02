@@ -42,3 +42,6 @@ Rails/HasManyOrHasOneDependent:
 
 Metrics/AbcSize:
   Enabled: false
+
+Metrics/BlockLength:
+  Max: 50
