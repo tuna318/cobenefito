@@ -3,5 +3,4 @@ namespace :job do
   task reset_claimable_points: :environment do
     ResetClaimablePointsJob.perform_now
   end
-
 end

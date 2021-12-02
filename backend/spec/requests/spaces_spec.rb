@@ -17,7 +17,7 @@ RSpec.describe "Spaces", type: :request do
     context "space not registered" do
       it "should create space successfully" do
         create_space_request
-        expect(response).to have_http_status(:created) 
+        expect(response).to have_http_status(:created)
       end
 
       it "should add a new space to database" do

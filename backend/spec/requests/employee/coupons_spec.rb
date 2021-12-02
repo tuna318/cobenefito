@@ -12,7 +12,9 @@ RSpec.describe "Employee::Coupons", type: :request do
   end
 
   describe "GET /employee/coupons" do
-    let(:send_get_employees_coupons) { get employee_coupons_path, headers: { "Authorization": @token } }
+    let(:send_get_employees_coupons) do
+      get employee_coupons_path, headers: { "Authorization": @token }
+    end
 
     it "should return coupon list" do
       send_get_employees_coupons

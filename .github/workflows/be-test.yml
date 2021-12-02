@@ -1,0 +1,23 @@
+name: backend-test-flow
+
+on: 
+  pull_request:
+    branches:
+      - master
+
+env:
+  RUBY_VERSION: 2.7.4
+
+jobs:
+  code-format-validation:
+    name: Rubocop
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - name: Install rubocop
+        run: gem install rubocop
+      - name: Checkcode
+        run: cd backend && rubocop
