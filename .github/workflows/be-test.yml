@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  RUBY_VERSION: 2.7.4
+  RUBY_VERSION: 2.7
 
 jobs:
   code-format-validation:
@@ -18,6 +18,6 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
       - name: Install rubocop
-        run: gem install rubocop
+        run: gem install rubocop-rails
       - name: Checkcode
         run: cd backend && rubocop
