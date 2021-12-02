@@ -21,9 +21,7 @@ module Manager
         return if user_ids.empty?
 
         distribute_coupons = get_distribute_coupons(space, params)
-        if distribute_coupons.size < user_ids&.size
-          raise CustomErrors::CouponNumberLessThanEmployeeNumber
-        end
+        raise CustomErrors::CouponNumberLessThanEmployeeNumber if distribute_coupons.size < user_ids&.size
 
         # TODO: check user_id whether it belongs to space or not
         update_coupons = []

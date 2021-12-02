@@ -2,7 +2,7 @@ require:
   - rubocop-rails
 
 Layout/LineLength:
-  Max: 100
+  Max: 120
 
 Style/StringLiterals:
   Enabled: false
@@ -45,3 +45,15 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Max: 50
+
+Metrics/MethodLength:
+  Max: 50
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
