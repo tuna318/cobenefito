@@ -9,6 +9,7 @@
     >
       <template v-slot:[`item.action`]="{ item }">
         <button
+          v-if="item.status === 'pending'"
           type="button"
           class="btn--medium btn--table-action"
           @click="onClaimDetailClicked(item)"
@@ -37,7 +38,7 @@ export default {
         { text: 'Request Title', value: 'title', sortable: false },
         { text: 'Request Time', value: 'created_at', sortable: false },
         { text: 'Status', value: 'status', sortable: false },
-        { text: '', value: 'action', sortable: false },
+        { text: '', value: 'action', sortable: false, width: '80px' },
       ],
       claims: [],
       selectedClaim: {},
