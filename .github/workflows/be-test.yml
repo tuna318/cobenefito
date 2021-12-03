@@ -18,22 +18,22 @@ env:
   DB_SOCKET: '/run/mysqld/mysqld.sock'
 
 jobs:
-  # code-format-validation:
-  #   name: Rubocop testing
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-ruby@v1
-  #       with:
-  #         ruby-version: ${{ env.RUBY_VERSION }}
-  #     - name: Install rubocop
-  #       run: gem install rubocop-rails
-  #     - name: Checkcode
-  #       run: cd backend && rubocop
+  code-format-validation:
+    name: Rubocop testing
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - name: Install rubocop
+        run: gem install rubocop-rails
+      - name: Checkcode
+        run: cd backend && rubocop
 
   code-test-validation:
     name: Rspec testing
-    # needs: code-format-validation
+    needs: code-format-validation
     runs-on: ubuntu-20.04
     services:
       database:
